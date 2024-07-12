@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Выборка из чата Youtube
 // @namespace    http://tampermonkey.net/
-// @version      0.3.3
+// @version      0.3.4
 // @description  try to take over the world!
 // @author       Crber
 // @match            *://*.youtube.com/live_chat*

@@ -3,7 +3,7 @@
 // @namespace    http://tampermonkey.net/
 // @version      0.3.4
 // @description  try to take over the world!
-// @author       Crber
+// @author       Cerber
 // @match            *://*.youtube.com/live_chat*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=youtube.com
 // @grant        none
@@ -16,21 +16,31 @@ var flag = false;
 var MessageID;
 var n=0;
 // Создание элемента кнопки
-var startButton = document.createElement("button");
-startButton.innerHTML = "&nbsp;&nbsp;&nbsp;▶&nbsp;&nbsp;&nbsp;";
+var startButton = document.createElement("a");
+//startButton.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"><g fill="#FFF" stroke="#000"><path d="M22.54 7.6s-.2-1.5-.86-2.17c-.83-.87-1.75-.88-2.18-.93-3.04-.22-7.6-.2-7.6-.2s-4.56-.02-7.6.2c-.43.05-1.35.06-2.18.93-.65.67-.86 2.18-.86 2.18S1.04 9.4 1 11.18v1.66c.04 1.78.26 3.55.26 3.55s.2 1.5.86 2.18c.83.87 1.9.84 2.4.94 1.7.15 7.2.2 7.38.2 0 0 4.57 0 7.6-.22.43-.05 1.35-.06 2.18-.93.65-.67.86-2.18.86-2.18s.22-1.77.24-3.55v-1.66c-.02-1.78-.24-3.55-.24-3.55z"/>    <path fill="#FF0000" d="M9.68 8.9v6.18l5.84-3.1z" stroke="none"/>  </g></svg>';
+
+    // Создаем и добавляем иконку YouTube
+var youtubeIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+youtubeIcon.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+youtubeIcon.setAttribute("viewBox", "0 0 24 24");
+youtubeIcon.setAttribute("width", "30");
+youtubeIcon.innerHTML = `
+  <g fill="#FFF" stroke="#000">
+    <path d="M22.54 7.6s-.2-1.5-.86-2.17c-.83-.87-1.75-.88-2.18-.93-3.04-.22-7.6-.2-7.6-.2s-4.56-.02-7.6.2c-.43.05-1.35.06-2.18.93-.65.67-.86 2.18-.86 2.18S1.04 9.4 1 11.18v1.66c.04 1.78.26 3.55.26 3.55s.2 1.5.86 2.18c.83.87 1.9.84 2.4.94 1.7.15 7.2.2 7.38.2 0 0 4.57 0 7.6-.22.43-.05 1.35-.06 2.18-.93.65-.67.86-2.18.86-2.18s.22-1.77.24-3.55v-1.66c-.02-1.78-.24-3.55-.24-3.55z"/>
+    <path fill="#FF0000" d="M9.68 8.9v6.18l5.84-3.1z" stroke="none"/>
+  </g>
+`;
+
+// Добавляем иконку в кнопку
+startButton.appendChild(youtubeIcon);
 
 // Стилизация кнопки
 startButton.style.position = "fixed";
 startButton.style.top = "15px";
-startButton.style.right = "50px";
+startButton.style.right = "90px";
 startButton.style.zIndex = "9999";
-startButton.style.padding = "4px";
-startButton.style.fontSize = "10px";
-startButton.style.backgroundColor = "#FFFFFF";
-startButton.style.color = "red";
-startButton.style.border = "#000000 1px solid";
-startButton.style.borderRadius = "4px";
 startButton.style.cursor = "pointer";
+
 // Добавление кнопки на страницу
 document.body.appendChild(startButton);
 
